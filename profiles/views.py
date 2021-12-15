@@ -4,7 +4,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate
 
 from django.shortcuts import render, redirect
-from .forms import SignupForm
+from .forms import SignupForm,CommentForm
 
 def signup(request):
     if request.method == 'POST':
@@ -19,3 +19,12 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, 'signup.html', {'form': form})
+
+def add_comment(request,pk):
+    if request.method =='POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():    
+            comment =form.save(commit=False)
+            comment.user =request.user
+            comment.save()
+    return redirect('app:detail',pk=pk)

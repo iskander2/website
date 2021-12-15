@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+from django.db.models.fields import CharField
 
 
 
@@ -34,3 +35,12 @@ class MyUserModel(AbstractBaseUser, PermissionsMixin):
     
     def save(self, *args, **kwargs):
         super(MyUserModel, self).save(*args, **kwargs)
+
+class Comement(models.Model):
+    text = models.CharField(max_length=200)
+    title = models.CharField(max_length=20)
+    user = models.ForeignKey(MyUserModel,related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.title    
+

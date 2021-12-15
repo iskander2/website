@@ -14,5 +14,10 @@
     </div>
 
   </div>
+  <form action="{% url 'profiles:add_comment' pk=product.pk %}" method ="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary">Создать</button>
+  </form>
 </div>
 {% endblock %}
