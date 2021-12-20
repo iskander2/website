@@ -5,7 +5,9 @@ from django.contrib.auth import login, authenticate
 
 from django.shortcuts import render, redirect
 from .forms import FeedBackForm, SignupForm,CommentForm
-from .utils import message
+from profiles import utils
+from django.conf import settings
+import telegram 
 
 def signup(request):
     if request.method == 'POST':
@@ -37,6 +39,10 @@ def feedback(request):
         if form.is_valid():
             dict = request.POST.copy()
             dict.pop("csrfmiddlewaretoken")
-            message =
-            print(dict)
+            message = utils.message.format(**dict)
+            bot = telegram.Bot(token=settings.BOT_TOKEN)
+            bot.send_message(chat_id=settings.CHAT_ID,text=message)
     return render(request,'feedback.html',{'form':form})
+
+def buy(request):
+    return render(request,'buy.html')

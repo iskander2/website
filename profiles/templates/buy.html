@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<h2>вы уже зарегистрированы</h2>
+
+{% else %} 
+<h2> вы не зарегистрированы</h2>
+{% endif %}
+{% endblock %}

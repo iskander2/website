@@ -18,3 +18,6 @@ def detail(request,pk):
     categories = Category.objects.all().order_by('name')
     return render(request, 'detail.html', {"categories":categories,'product': product,"form":form})
 
+
+        
+
