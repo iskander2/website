@@ -13,3 +13,9 @@ class CommentForm(forms.ModelForm):
         model = Comement
         fields = ['title','text'] 
 
+class FeedBackForm(forms.Form):
+    number =forms.CharField(max_length=20)
+    name = forms.CharField(max_length=20)
+    text = forms.CharField(max_length=200)
+
+

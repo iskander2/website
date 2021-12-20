@@ -4,7 +4,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate
 
 from django.shortcuts import render, redirect
-from .forms import SignupForm,CommentForm
+from .forms import FeedBackForm, SignupForm,CommentForm
+from .utils import message
 
 def signup(request):
     if request.method == 'POST':
@@ -26,5 +27,16 @@ def add_comment(request,pk):
         if form.is_valid():    
             comment =form.save(commit=False)
             comment.user =request.user
+            comment.product_id = pk
             comment.save()
     return redirect('app:detail',pk=pk)
+
+def feedback(request):
+    form = FeedBackForm(None or request.POST)
+    if request.method =='POST':
+        if form.is_valid():
+            dict = request.POST.copy()
+            dict.pop("csrfmiddlewaretoken")
+            message =
+            print(dict)
+    return render(request,'feedback.html',{'form':form})
