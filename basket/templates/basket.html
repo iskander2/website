@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <div class="row">
     {% for product in products %}
     <div class="col-4" style="margin-top: 5%; margin-bottom: 3%;">
@@ -13,6 +14,11 @@
         </div>
     </div>
     {% endfor %}
+    <form action="{% url 'basket:get_basket' %}"  style="margin-left:40%" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary">Оформить</button>
+      </form>
         </div>
     </div>
 

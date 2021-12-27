@@ -44,5 +44,11 @@ def feedback(request):
             bot.send_message(chat_id=settings.CHAT_ID,text=message)
     return render(request,'feedback.html',{'form':form})
 
-def buy(request):
-    return render(request,'buy.html')
+# def basket(request):
+#     basket = True
+#     if request.user.is_authenticated:
+#         basket =True
+#         return render(request,'app:main')
+#     else:
+#         return redirect('profiles:signup')    
+    

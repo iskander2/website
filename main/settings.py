@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'profiles'
+    'profiles',
+    'basket'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,4 @@ MEDIA_ROOT= os.path.join(BASE_DIR, "staticfiles", "media")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BOT_TOKEN = "2089996903:AAFAl8hXICnltaWeycsmgYzX_PSx0MXuLpw"
 CHAT_ID = "-664381048"
+CART_SESSION_ID = 'cart'
